@@ -1,4 +1,5 @@
 import logging
+from functools import lru_cache
 import sys
 
 from pydantic_settings import BaseSettings
@@ -13,6 +14,7 @@ class MinioSettings(BaseSettings):
     minio_uri: str
 
 
+@lru_cache
 class Settings(BaseSettings):
     minio: MinioSettings = MinioSettings()
 
