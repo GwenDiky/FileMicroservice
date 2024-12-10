@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "filemicroservice"
+version = "0.1.0"
+description = ""
+authors = ["Tamagil <tamagiltamagil@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.6"
+uvicorn = "^0.32.1"
+minio = "^7.2.12"
+pre-commit = "^4.0.1"
+aioboto3 = "^13.2.0"
+requests = "^2.32.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
