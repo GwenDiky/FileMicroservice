@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
+
 from src.core.consumer import start_listen
 
 app = FastAPI()

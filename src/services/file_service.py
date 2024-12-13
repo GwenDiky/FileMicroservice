@@ -32,13 +32,15 @@ class FileService:
             )
 
     async def get_file_path(self, file_name: str, file_type: str) -> str:
-        if file_type == "task":
-            return f"task_files/{file_name}"
-        if file_type == "project":
-            return f"project_files/{file_name}"
-        if file_type == "user":
-            return f"user_files/{file_name}"
-        raise ValueError("Invalid file type specified.")
+        file_paths = {
+            "task": f"task_files/{file_name}",
+            "project": f"project_files/{file_name}",
+            "user": f"user_files/{file_name}",
+        }
+        path = file_paths.get(file_type)
+        if not path:
+            raise ValueError("Invalid file type specified.")
+        return path
 
     async def upload_file(
         self, file: UploadFile, file_type: str
