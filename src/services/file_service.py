@@ -11,9 +11,11 @@ from src.schemas import file_schema
 
 class FileService:
     def __init__(
-        self, minio_client: aioboto3.Session().client, bucket_name: str
+            self,
+            bucket_name: str,
+            minio_client: Optional[aioboto3.Session().client] = None,
     ):
-        self.minio_client = minio_client
+        self.minio_client = minio_client or aioboto3.Session().client("s3")
         self.bucket_name = bucket_name
 
     async def get_file_metadata(
