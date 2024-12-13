@@ -1,7 +1,9 @@
 import logging
 import sys
+from functools import lru_cache
 
 from pydantic_settings import BaseSettings
+
 
 class MinioSettings(BaseSettings):
     minio_root_user: str
@@ -11,8 +13,10 @@ class MinioSettings(BaseSettings):
     minio_secure: bool
     minio_bucket_name: str
     minio_uri: str
+    minio_expiration: int
 
 
+@lru_cache
 class Settings(BaseSettings):
     minio: MinioSettings = MinioSettings()
 
